@@ -35,7 +35,7 @@ EventHub is a production-ready Event Management System. It allows organizers to 
 2. The application is configured to connect with:
    - **URL:** `jdbc:mysql://localhost:3306/eventhub_db`
    - **Username:** `root`
-   - **Password:** `root9876` *(Update this in `backend/src/main/resources/application.properties` if your MySQL credentials differ)*.
+   - **Password:** `*******` 
 
 ### Running the Backend
 1. Open your terminal and navigate to the `backend` folder:
