@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,91 +9,112 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         .role-badge-header {
-            font-size:0.65rem; 
-            padding:0.2rem 0.6rem; 
-            margin-left: 0.5rem; 
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            margin-left: 0.5rem;
             border-radius: var(--radius-sm);
         }
+
         .sidebar-link:hover {
             background: rgba(255, 255, 255, 0.05) !important;
             color: white !important;
         }
+
         .sidebar-link.active {
             background: rgba(88, 166, 255, 0.1) !important;
             color: var(--primary) !important;
         }
+
         #payment-history-table-body td {
             text-align: center !important;
             vertical-align: middle !important;
         }
+
         @media (max-width: 768px) {
             .sidebar {
                 position: fixed;
                 height: 100vh;
                 left: -260px;
                 top: 0;
-                box-shadow: 0 0 50px rgba(0,0,0,0.8);
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
             }
+
             .sidebar.open {
                 left: 0;
             }
-            #sidebar-close, #sidebar-toggle {
+
+            #sidebar-close,
+            #sidebar-toggle {
                 display: block !important;
             }
+
             .navbar-brand-desktop {
                 display: none !important;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Dashboard Layout Wrapper -->
     <div class="dashboard-layout" style="display: flex; flex: 1; width: 100%; overflow-x: hidden;">
-        
+
         <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar" style="width: 260px; background: rgba(13, 17, 23, 0.95); border-right: 1px solid var(--border); display: flex; flex-direction: column; transition: all 0.3s ease; z-index: 200;">
-            <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <aside class="sidebar" id="sidebar"
+            style="width: 260px; background: rgba(13, 17, 23, 0.95); border-right: 1px solid var(--border); display: flex; flex-direction: column; transition: all 0.3s ease; z-index: 200;">
+            <div
+                style="padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
                 <a href="index.html" class="navbar-brand" style="font-size: 1.3rem;">
                     <i class="fas fa-calendar-check" style="color: var(--primary);"></i>
                     <span>EventHub</span>
                 </a>
-                <button id="sidebar-close" class="btn btn-outline" style="padding: 0.3rem 0.6rem; display: none;"><i class="fas fa-times"></i></button>
+                <button id="sidebar-close" class="btn btn-outline" style="padding: 0.3rem 0.6rem; display: none;"><i
+                        class="fas fa-times"></i></button>
             </div>
-            <ul id="sidebar-menu" style="list-style: none; padding: 1.5rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
+            <ul id="sidebar-menu"
+                style="list-style: none; padding: 1.5rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
                 <li>
-                    <a href="#" class="sidebar-link active" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--primary); background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" class="sidebar-link active"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--primary); background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-home" style="width: 20px; text-align: center;"></i> Overview
                     </a>
                 </li>
                 <li id="sidebar-history-item" style="display: none;">
-                    <a href="#" id="sidebar-btn-history" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" id="sidebar-btn-history" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-ticket-alt" style="width: 20px; text-align: center;"></i> My Tickets
                     </a>
                 </li>
                 <li id="sidebar-payment-history-item" style="display: none;">
-                    <a href="#" id="sidebar-btn-payment-history" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
-                        <i class="fas fa-file-invoice-dollar" style="width: 20px; text-align: center;"></i> Payment History
+                    <a href="#" id="sidebar-btn-payment-history" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                        <i class="fas fa-file-invoice-dollar" style="width: 20px; text-align: center;"></i> Payment
+                        History
                     </a>
                 </li>
                 <li id="sidebar-create-event-item" style="display: none;">
-                    <a href="#" id="sidebar-btn-create" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" id="sidebar-btn-create" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-plus-circle" style="width: 20px; text-align: center;"></i> Create Event
                     </a>
                 </li>
                 <li id="sidebar-admin-user-item" style="display: none;">
-                    <a href="#" id="sidebar-btn-add-user" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" id="sidebar-btn-add-user" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-user-plus" style="width: 20px; text-align: center;"></i> Add User
                     </a>
                 </li>
                 <hr style="border:0; border-top: 1px solid var(--border); margin: 1rem 0;">
                 <li>
-                    <a href="#" id="sidebar-btn-settings" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" id="sidebar-btn-settings" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--text-muted); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-cog" style="width: 20px; text-align: center;"></i> Settings
                     </a>
                 </li>
                 <li>
-                    <a href="#" id="sidebar-btn-logout" class="sidebar-link" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--danger); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
+                    <a href="#" id="sidebar-btn-logout" class="sidebar-link"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; color: var(--danger); border-radius: var(--radius-md); font-weight: 500; transition: all 0.2s; text-decoration: none;">
                         <i class="fas fa-sign-out-alt" style="width: 20px; text-align: center;"></i> Logout
                     </a>
                 </li>
@@ -100,95 +122,121 @@
         </aside>
 
         <!-- Main Content Wrapper -->
-        <div class="main-wrapper" style="flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative;">
-            
+        <div class="main-wrapper"
+            style="flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative;">
+
             <!-- Navbar -->
             <nav class="navbar" style="padding: 1rem 2rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                     <div style="display: flex; align-items: center;">
-                        <button id="sidebar-toggle" class="btn btn-outline" style="padding: 0.4rem 0.8rem; margin-right: 1rem; display: none;"><i class="fas fa-bars"></i></button>
+                        <button id="sidebar-toggle" class="btn btn-outline"
+                            style="padding: 0.4rem 0.8rem; margin-right: 1rem; display: none;"><i
+                                class="fas fa-bars"></i></button>
                         <a href="index.html" class="navbar-brand navbar-brand-desktop" style="display: none;">
                             <i class="fas fa-calendar-check" style="color: var(--primary);"></i>
                             <span>EventHub</span>
                         </a>
                     </div>
                     <div class="nav-links" style="position: relative; display: flex; align-items: center;">
-                <div id="nav-profile-trigger" style="cursor: pointer; display: flex; align-items: center; gap: 0.8rem; padding: 0.4rem; border-radius: var(--radius-full); transition: background 0.2s;">
-                    <div id="nav-profile-icon" style="width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(88, 166, 255, 0.4); overflow: hidden;">
-                        <!-- Icon injected by JS -->
+                        <div id="nav-profile-trigger"
+                            style="cursor: pointer; display: flex; align-items: center; gap: 0.8rem; padding: 0.4rem; border-radius: var(--radius-full); transition: background 0.2s;">
+                            <div id="nav-profile-icon"
+                                style="width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(88, 166, 255, 0.4); overflow: hidden;">
+                                <!-- Icon injected by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="glass-card fade-in"
+                            style="display: none; position: absolute; top: 70px; right: 0; min-width: 280px; padding: 1.5rem; text-align: left; z-index: 200;">
+                            <h3 id="dropdown-name"
+                                style="margin-bottom: 0.3rem; display:flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+                            </h3>
+                            <p id="dropdown-email"
+                                style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;"></p>
+                            <button class="btn btn-outline" id="btn-edit-profile"
+                                style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
+                                <i class="fas fa-user-edit" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                                Edit Profile
+                            </button>
+                            <button class="btn btn-outline" id="btn-account-settings"
+                                onclick="document.getElementById('profile-dropdown').style.display='none'; document.getElementById('nav-profile-trigger').style.background='transparent'; document.getElementById('account-settings-modal').classList.add('active');"
+                                style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
+                                <i class="fas fa-cog" style="margin-right: 0.5rem; color: var(--primary);"></i> Account
+                                Settings
+                            </button>
+                            <button class="btn btn-outline" id="btn-help-support"
+                                onclick="document.getElementById('profile-dropdown').style.display='none'; document.getElementById('nav-profile-trigger').style.background='transparent'; document.getElementById('help-modal').classList.add('active');"
+                                style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
+                                <i class="fas fa-question-circle"
+                                    style="margin-right: 0.5rem; color: var(--primary);"></i> Help & Support
+                            </button>
+                            <hr style="border: 0; border-top: 1px solid var(--border); margin: 1rem 0;">
+                            <button class="btn btn-danger" id="btn-logout"
+                                style="width: 100%; border: none; background: rgba(248, 81, 73, 0.1); transition: background 0.3s;">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i> Secure Logout
+                            </button>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Dropdown Menu -->
-                <div id="profile-dropdown" class="glass-card fade-in" style="display: none; position: absolute; top: 70px; right: 0; min-width: 280px; padding: 1.5rem; text-align: left; z-index: 200;">
-                    <h3 id="dropdown-name" style="margin-bottom: 0.3rem; display:flex; justify-content: space-between; align-items: center; font-size: 1.1rem;"></h3>
-                    <p id="dropdown-email" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;"></p>
-                    <button class="btn btn-outline" id="btn-edit-profile" style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
-                        <i class="fas fa-user-edit" style="margin-right: 0.5rem; color: var(--primary);"></i> Edit Profile
-                    </button>
-                    <button class="btn btn-outline" id="btn-account-settings" onclick="document.getElementById('profile-dropdown').style.display='none'; document.getElementById('nav-profile-trigger').style.background='transparent'; document.getElementById('account-settings-modal').classList.add('active');" style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
-                        <i class="fas fa-cog" style="margin-right: 0.5rem; color: var(--primary);"></i> Account Settings
-                    </button>
-                    <button class="btn btn-outline" id="btn-help-support" onclick="document.getElementById('profile-dropdown').style.display='none'; document.getElementById('nav-profile-trigger').style.background='transparent'; document.getElementById('help-modal').classList.add('active');" style="width: 100%; border: none; text-align: left; padding: 0.8rem; margin-bottom: 0.5rem; background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-md); transition: background 0.3s;">
-                        <i class="fas fa-question-circle" style="margin-right: 0.5rem; color: var(--primary);"></i> Help & Support
-                    </button>
-                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 1rem 0;">
-                    <button class="btn btn-danger" id="btn-logout" style="width: 100%; border: none; background: rgba(248, 81, 73, 0.1); transition: background 0.3s;">
-                        <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i> Secure Logout
-                    </button>
-                </div>
-            </div>
                 </div>
             </nav>
 
-            <main class="container" style="padding: 3rem 2rem; flex: 1; display: flex; flex-direction: column; max-width: 100%;">
-        
-        <!-- Header Actions -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-            <div>
-                <h2 id="dashboard-title" style="font-size: 2rem;">Overview</h2>
-                <p class="text-muted" style="font-size: 0.95rem; margin-top: 0.4rem;" id="dashboard-subtitle">Manage your events and activities.</p>
-            </div>
-            <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <div id="dashboard-actions" style="display: flex; align-items: center; gap: 1rem;">
-                    <!-- Action buttons dynamically injected -->
+            <main class="container"
+                style="padding: 3rem 2rem; flex: 1; display: flex; flex-direction: column; max-width: 100%;">
+
+                <!-- Header Actions -->
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h2 id="dashboard-title" style="font-size: 2rem;">Overview</h2>
+                        <p class="text-muted" style="font-size: 0.95rem; margin-top: 0.4rem;" id="dashboard-subtitle">
+                            Manage your events and activities.</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <div id="dashboard-actions" style="display: flex; align-items: center; gap: 1rem;">
+                            <!-- Action buttons dynamically injected -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Search Bar -->
-        <div id="search-container" style="margin-bottom: 2rem;">
-            <div style="position: relative; max-width: 500px;">
-                <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                <input type="text" id="global-search" class="form-control" placeholder="Search events by title or location..." style="padding-left: 40px; border-radius: 30px; background: rgba(255,255,255,0.03);">
-            </div>
-        </div>
+                <!-- Search Bar -->
+                <div id="search-container" style="margin-bottom: 2rem;">
+                    <div style="position: relative; max-width: 500px;">
+                        <i class="fas fa-search"
+                            style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="text" id="global-search" class="form-control"
+                            placeholder="Search events by title or location..."
+                            style="padding-left: 40px; border-radius: 30px; background: rgba(255,255,255,0.03);">
+                    </div>
+                </div>
 
-        <!-- Dynamic Content Section -->
-        <div id="dashboard-content" style="flex: 1;">
-            <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
-                <i class="fas fa-circle-notch fa-spin text-muted" style="font-size: 2rem;"></i>
-            </div>
-            </div>
-        </main>
-        
+                <!-- Dynamic Content Section -->
+                <div id="dashboard-content" style="flex: 1;">
+                    <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+                        <i class="fas fa-circle-notch fa-spin text-muted" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </main>
+
         </div> <!-- End Main Wrapper -->
     </div> <!-- End Dashboard Layout Wrapper -->
-    
+
     <!-- Create Event Modal (Organizer / Admin) -->
     <div class="modal" id="create-event-modal">
         <div class="modal-content" style="max-width: 500px;">
             <span class="modal-close" id="create-event-close">&times;</span>
             <h3 class="mb-4">Create New Event</h3>
-            
+
             <form id="create-event-form">
                 <div class="form-group">
                     <label class="form-label">Event Title</label>
-                    <input type="text" id="ev-title" class="form-control" required placeholder="e.g. Annual Tech Summit">
+                    <input type="text" id="ev-title" class="form-control" required
+                        placeholder="e.g. Annual Tech Summit">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Detailed Description</label>
-                    <textarea id="ev-desc" class="form-control" required rows="2" placeholder="What is this event about?" style="resize: none;"></textarea>
+                    <textarea id="ev-desc" class="form-control" required rows="2"
+                        placeholder="What is this event about?" style="resize: none;"></textarea>
                 </div>
                 <div style="display: flex; gap: 1rem;">
                     <div class="form-group" style="flex: 1;">
@@ -203,11 +251,13 @@
                 <div style="display: flex; gap: 1rem;">
                     <div class="form-group" style="flex: 1;">
                         <label class="form-label">Location</label>
-                        <input type="text" id="ev-location" class="form-control" placeholder="City or 'Online'" required>
+                        <input type="text" id="ev-location" class="form-control" placeholder="City or 'Online'"
+                            required>
                     </div>
                     <div class="form-group" style="flex: 1;">
                         <label class="form-label">Max Capacity</label>
-                        <input type="number" id="ev-capacity" class="form-control" min="1" required placeholder="e.g. 100">
+                        <input type="number" id="ev-capacity" class="form-control" min="1" required
+                            placeholder="e.g. 100">
                     </div>
                 </div>
                 <div style="display: flex; gap: 1rem;">
@@ -220,10 +270,12 @@
                     </div>
                     <div class="form-group" style="flex: 1; display: none;" id="ev-price-container">
                         <label class="form-label">Ticket Price ($)</label>
-                        <input type="number" id="ev-price" class="form-control" min="0" step="0.01" placeholder="e.g. 50.00">
+                        <input type="number" id="ev-price" class="form-control" min="0" step="0.01"
+                            placeholder="e.g. 50.00">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;"><i class="fas fa-plus" style="margin-right: 0.5rem;"></i> Publish Event</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;"><i
+                        class="fas fa-plus" style="margin-right: 0.5rem;"></i> Publish Event</button>
             </form>
         </div>
     </div>
@@ -281,7 +333,7 @@
         <div class="modal-content">
             <span class="modal-close" id="user-modal-close">&times;</span>
             <h3 class="mb-4" id="user-modal-title">System User Management</h3>
-            
+
             <form id="user-form">
                 <input type="hidden" id="user-id">
                 <div class="form-group">
@@ -309,8 +361,11 @@
                     </select>
                 </div>
                 <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('user-modal').classList.remove('active')"><i class="fas fa-times" style="margin-right: 0.5rem;"></i> Cancel</button>
-                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save" style="margin-right: 0.5rem;"></i> Save</button>
+                    <button type="button" class="btn btn-outline" style="flex: 1;"
+                        onclick="document.getElementById('user-modal').classList.remove('active')"><i
+                            class="fas fa-times" style="margin-right: 0.5rem;"></i> Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save"
+                            style="margin-right: 0.5rem;"></i> Save</button>
                 </div>
             </form>
         </div>
@@ -323,10 +378,12 @@
             <h3 class="mb-4">Edit Profile</h3>
             <form id="edit-profile-form">
                 <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <div id="edit-profile-preview" style="width: 100px; height: 100px; border-radius: 50%; background: var(--border); margin: 0 auto 1rem auto; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--text-muted);">
+                    <div id="edit-profile-preview"
+                        style="width: 100px; height: 100px; border-radius: 50%; background: var(--border); margin: 0 auto 1rem auto; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--text-muted);">
                         <i class="fas fa-user"></i>
                     </div>
-                    <label for="edit-profile-image" class="btn btn-outline" style="cursor: pointer; padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+                    <label for="edit-profile-image" class="btn btn-outline"
+                        style="cursor: pointer; padding: 0.4rem 0.8rem; font-size: 0.85rem;">
                         <i class="fas fa-camera"></i> Change Photo
                     </label>
                     <input type="file" id="edit-profile-image" accept="image/*" style="display: none;">
@@ -338,7 +395,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Email Address (Read-only)</label>
-                    <input type="email" id="edit-profile-email" class="form-control" readonly style="opacity: 0.7; cursor: not-allowed;">
+                    <input type="email" id="edit-profile-email" class="form-control" readonly
+                        style="opacity: 0.7; cursor: not-allowed;">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Phone Number</label>
@@ -346,12 +404,16 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">New Password (Leave blank to keep current)</label>
-                    <input type="password" id="edit-profile-password" class="form-control" placeholder="Enter new password">
+                    <input type="password" id="edit-profile-password" class="form-control"
+                        placeholder="Enter new password">
                 </div>
 
                 <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('edit-profile-modal').classList.remove('active')"><i class="fas fa-times" style="margin-right: 0.5rem;"></i> Cancel</button>
-                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save" style="margin-right: 0.5rem;"></i> Save</button>
+                    <button type="button" class="btn btn-outline" style="flex: 1;"
+                        onclick="document.getElementById('edit-profile-modal').classList.remove('active')"><i
+                            class="fas fa-times" style="margin-right: 0.5rem;"></i> Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save"
+                            style="margin-right: 0.5rem;"></i> Save</button>
                 </div>
             </form>
         </div>
@@ -364,9 +426,10 @@
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <i class="fas fa-lock text-muted" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
                 <h3>Secure Checkout</h3>
-                <p class="text-muted" style="font-size: 0.9rem;">Total Due: <span id="payment-amount" style="font-weight:bold; color:var(--success); font-size:1.1rem;">$0.00</span></p>
+                <p class="text-muted" style="font-size: 0.9rem;">Total Due: <span id="payment-amount"
+                        style="font-weight:bold; color:var(--success); font-size:1.1rem;">$0.00</span></p>
             </div>
-            
+
             <form id="payment-form">
                 <div class="form-group">
                     <label class="form-label">Cardholder Name</label>
@@ -374,19 +437,22 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Card Number</label>
-                    <input type="text" id="card-number" class="form-control" required placeholder="0000 0000 0000 0000" maxlength="19">
+                    <input type="text" id="card-number" class="form-control" required placeholder="0000 0000 0000 0000"
+                        maxlength="19">
                 </div>
                 <div style="display: flex; gap: 1rem;">
                     <div class="form-group" style="flex: 1;">
                         <label class="form-label">Expiry Date</label>
-                        <input type="text" id="card-expiry" class="form-control" required placeholder="MM/YY" maxlength="5">
+                        <input type="text" id="card-expiry" class="form-control" required placeholder="MM/YY"
+                            maxlength="5">
                     </div>
                     <div class="form-group" style="flex: 1;">
                         <label class="form-label">CVV</label>
                         <input type="text" id="card-cvv" class="form-control" required placeholder="123" maxlength="4">
                     </div>
                 </div>
-                <button type="submit" id="btn-pay-submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                <button type="submit" id="btn-pay-submit" class="btn btn-primary"
+                    style="width: 100%; margin-top: 1rem;">
                     <i class="fas fa-credit-card" style="margin-right: 0.5rem;"></i> Pay & Book Ticket
                 </button>
             </form>
@@ -416,15 +482,19 @@
         <div class="modal-content" style="max-width: 800px; min-height: 500px; display: flex; flex-direction: column;">
             <span class="modal-close" id="gallery-close">&times;</span>
             <h3 class="mb-4" id="gallery-title">Event Gallery</h3>
-            
+
             <form id="gallery-form" style="display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center;">
-                <input type="file" id="gallery-file" class="form-control" accept="image/*" style="flex: 1; padding: 0.5rem;">
+                <input type="file" id="gallery-file" class="form-control" accept="image/*"
+                    style="flex: 1; padding: 0.5rem;">
                 <span class="text-muted" style="font-weight: 600; font-size: 0.8rem;">OR</span>
-                <input type="url" id="gallery-image-url" class="form-control" placeholder="Paste Image URL here (e.g. https://...)" style="flex: 1;">
-                <button type="submit" class="btn btn-primary" style="white-space: nowrap;"><i class="fas fa-upload"></i> Upload</button>
+                <input type="url" id="gallery-image-url" class="form-control"
+                    placeholder="Paste Image URL here (e.g. https://...)" style="flex: 1;">
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap;"><i class="fas fa-upload"></i>
+                    Upload</button>
             </form>
 
-            <div id="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; flex: 1; overflow-y: auto; padding-right: 0.5rem;">
+            <div id="gallery-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; flex: 1; overflow-y: auto; padding-right: 0.5rem;">
                 <!-- Populated via JS -->
             </div>
         </div>
@@ -433,28 +503,35 @@
     <!-- Account Settings Modal -->
     <div class="modal" id="account-settings-modal">
         <div class="modal-content" style="max-width: 450px;">
-            <span class="modal-close" id="account-settings-close" onclick="document.getElementById('account-settings-modal').classList.remove('active')">&times;</span>
+            <span class="modal-close" id="account-settings-close"
+                onclick="document.getElementById('account-settings-modal').classList.remove('active')">&times;</span>
             <h3 class="mb-4">Account Settings</h3>
-            
+
             <form id="account-settings-form">
-                <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                <div class="form-group"
+                    style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
                     <div>
                         <label class="form-label" style="margin-bottom: 0; color: white;">Email Notifications</label>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">Receive updates about your events.</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Receive updates about your events.
+                        </div>
                     </div>
                     <label style="position: relative; display: inline-block; width: 40px; height: 20px;">
                         <input type="checkbox" id="setting-notifications" style="width: 18px; height: 18px;">
                     </label>
                 </div>
 
-                <div class="form-group" style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                <div class="form-group"
+                    style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
                     <label class="form-label" style="color: var(--danger); margin-bottom: 0.5rem;">Danger Zone</label>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Once you delete your account, there is no going back. Please be certain.</div>
-                    <button type="button" class="btn btn-danger" id="btn-delete-account" style="width: 100%;"><i class="fas fa-trash-alt" style="margin-right: 0.5rem;"></i> Delete My Account</button>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Once you delete your
+                        account, there is no going back. Please be certain.</div>
+                    <button type="button" class="btn btn-danger" id="btn-delete-account" style="width: 100%;"><i
+                            class="fas fa-trash-alt" style="margin-right: 0.5rem;"></i> Delete My Account</button>
                 </div>
-                
+
                 <div style="display: flex; gap: 1rem;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save" style="margin-right: 0.5rem;"></i> Save Settings</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save"
+                            style="margin-right: 0.5rem;"></i> Save Settings</button>
                 </div>
             </form>
         </div>
@@ -463,30 +540,35 @@
     <!-- Help & Support Modal -->
     <div class="modal" id="help-modal">
         <div class="modal-content" style="max-width: 500px;">
-            <span class="modal-close" id="help-close" onclick="document.getElementById('help-modal').classList.remove('active')">&times;</span>
+            <span class="modal-close" id="help-close"
+                onclick="document.getElementById('help-modal').classList.remove('active')">&times;</span>
             <h3 class="mb-4">Help & Support</h3>
-            
+
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Booking Tickets</h4>
                 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">
-                    To book a ticket, navigate to the <strong>Overview</strong> section and click "Book Spot" on any available event. You can view all your reserved tickets under the <strong>My Tickets</strong> tab.
+                    To book a ticket, navigate to the <strong>Overview</strong> section and click "Book Spot" on any
+                    available event. You can view all your reserved tickets under the <strong>My Tickets</strong> tab.
                 </p>
             </div>
-            
+
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Hosting Events</h4>
                 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">
-                    If you are an Organizer, you can publish new events from the <strong>Create Event</strong> menu. Manage your attendees, view revenue, and upload gallery images from your personalized dashboard.
+                    If you are an Organizer, you can publish new events from the <strong>Create Event</strong> menu.
+                    Manage your attendees, view revenue, and upload gallery images from your personalized dashboard.
                 </p>
             </div>
 
             <div style="margin-bottom: 1.5rem;">
                 <h4 style="margin-bottom: 0.5rem; color: var(--primary);">Contact Support</h4>
                 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">
-                    If you face any issues with ticket booking, event creation, or account management, please reach out to our team at <strong>support@eventhub.com</strong> or call us at +1 800-123-4567.
+                    If you face any issues with ticket booking, event creation, or account management, please reach out
+                    to our team at <strong>support@eventhub.com</strong> or call us at +1 800-123-4567.
                 </p>
             </div>
-            <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('help-modal').classList.remove('active')">Close</button>
+            <button class="btn btn-primary" style="width: 100%;"
+                onclick="document.getElementById('help-modal').classList.remove('active')">Close</button>
         </div>
     </div>
 
@@ -496,4 +578,5 @@
     <script src="js/api.js?v=2"></script>
     <script src="js/dashboard.js?v=2"></script>
 </body>
+
 </html>
