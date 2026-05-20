@@ -32,10 +32,14 @@ EventHub is a production-ready Event Management System. It allows organizers to 
    ```sql
    CREATE DATABASE eventhub_db;
    ```
-2. The application is configured to connect with:
-   - **URL:** `jdbc:mysql://localhost:3306/eventhub_db`
-   - **Username:** `root`
-   - **Password:** `root9876` *(Update this in `backend/src/main/resources/application.properties` if your MySQL credentials differ)*.
+2. The application reads configuration from environment variables. To configure your database:
+   - Copy the `.env.example` file in the `backend` folder to a new file named `.env`.
+   - Update `.env` with your actual database URL, username, and password:
+     ```env
+     SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/eventhub_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+     SPRING_DATASOURCE_USERNAME=your_database_username
+     SPRING_DATASOURCE_PASSWORD=your_database_password
+     ``` 
 
 ### Running the Backend
 1. Open your terminal and navigate to the `backend` folder:
