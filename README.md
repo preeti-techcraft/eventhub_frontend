@@ -39,7 +39,7 @@ EventHub is a production-ready Event Management System. It allows organizers to 
      SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/eventhub_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
      SPRING_DATASOURCE_USERNAME=your_database_username
      SPRING_DATASOURCE_PASSWORD=your_database_password
-     ``` 
+     ```
 
 ### Running the Backend
 1. Open your terminal and navigate to the `backend` folder:
