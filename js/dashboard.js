@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p class="event-card-description">${ev.desc}</p>
                             <p class="event-card-meta"><i class="fas fa-calendar-alt"></i> ${ev.date} at ${ev.time}</p>
                             <p class="event-card-meta"><i class="fas fa-map-marker-alt"></i> ${ev.location}</p>
+                            <p class="event-card-meta" style="color: var(--primary); font-weight: 500;"><i class="fas fa-user-tie"></i> Host: ${ev.organizer ? ev.organizer.name : 'Administrator'}</p>
                         </div>
                         <div class="event-meta">
                             <div class="badge-group">
@@ -732,6 +733,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                             <div style="font-weight:500;">${e.title}</div>
                                             <div style="font-size:0.75rem; color:var(--text-muted);">${e.location}</div>
                                             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">${e.isFree ? 'Free' : '$' + parseFloat(e.price).toFixed(2)}</div>
+                                            <div style="font-size:0.75rem; color:var(--secondary); margin-top:0.2rem;"><i class="fas fa-user-tie"></i> Host: ${e.organizer ? e.organizer.name : 'Administrator'}</div>
                                             <div style="font-size:0.75rem; margin-top:0.4rem;">${statusBtnHtml}</div>
                                         </td>
                                         <td style="white-space: nowrap;">${e.date} at ${e.time}</td>
