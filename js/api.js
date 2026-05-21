@@ -1,6 +1,6 @@
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8080/api'
-    : 'https://eventhub-backend.onrender.com/api'; // <--- Replace with your actual Render URL when deployed
+    : 'https://eventhubbackend-production.up.railway.app/api';
 
 // Helper function to include JWT token in all secure requests
 const getAuthHeaders = () => {
