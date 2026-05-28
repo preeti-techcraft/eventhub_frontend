@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <tr>
                                         <td data-label="Name / Email">
                                             <div style="display:flex; align-items:center; gap:0.8rem;">
-                                                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--border); overflow: hidden; display:flex; justify-content:center; align-items:center;">
+                                                <div style="width: 32px; height: 32px; min-width: 32px; min-height: 32px; flex-shrink: 0; border-radius: 50%; background: var(--border); overflow: hidden; display:flex; justify-content:center; align-items:center;">
                                                     ${u.profileImage ? `<img src="${u.profileImage}" style="width:100%; height:100%; object-fit:cover;">` : `<i class="fas fa-user text-muted"></i>`}
                                                 </div>
                                                 <div>
