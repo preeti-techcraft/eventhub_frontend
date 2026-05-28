@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         const form = document.getElementById('gallery-form');
         if (form) {
-            form.style.display = session.role === 'ORGANIZER' ? 'flex' : 'none';
+            form.style.display = (session.role === 'ORGANIZER' || session.role === 'ADMIN') ? 'flex' : 'none';
         }
 
         renderGalleryGrid(ev.galleryImages || []);
@@ -566,7 +566,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const renderGalleryGrid = (images) => {
         const grid = document.getElementById('gallery-grid');
         if (!images || images.length === 0) {
-            const msg = session.role === 'ORGANIZER' ? 'No photos yet. Add some below!' : 'No photos available for this event.';
+            const msg = (session.role === 'ORGANIZER' || session.role === 'ADMIN') ? 'No photos yet. Add some below!' : 'No photos available for this event.';
             grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);"><i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i><p>${msg}</p></div>`;
             return;
         }
@@ -574,7 +574,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         grid.innerHTML = images.map(imgUrl => `
             <div style="position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; background: #000;">
                 <img src="${imgUrl}" alt="Event Photo" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: 0.3s ease;">
-                ${session.role === 'ORGANIZER' ? `<button onclick="removeGalleryImage('${imgUrl}')" style="position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,50,50,0.8); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Remove Photo"><i class="fas fa-trash"></i></button>` : ''}
+                ${(session.role === 'ORGANIZER' || session.role === 'ADMIN') ? `<button onclick="removeGalleryImage('${imgUrl}')" style="position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,50,50,0.8); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Remove Photo"><i class="fas fa-trash"></i></button>` : ''}
             </div>
         `).join('');
     };
@@ -748,6 +748,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         <td data-label="Action" style="white-space: nowrap;">
                                             <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end;">
                                                 <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="viewAttendees(${e.id})"><i class="fas fa-users" style="margin-right: 0.4rem;"></i> Attendees</button>
+                                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="openGallery(${e.id})"><i class="fas fa-images" style="margin-right: 0.4rem;"></i> Gallery</button>
                                                 <button class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteEvent(${e.id}, 'admin')"><i class="fas fa-trash" style="margin-right: 0.4rem;"></i> Drop</button>
                                             </div>
                                         </td>
