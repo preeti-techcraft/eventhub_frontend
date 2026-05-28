@@ -309,10 +309,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
                 return `
                 <tr>
-                    <td><div style="font-weight:600;">${b.event.title}</div></td>
-                    <td>${b.event.date} at ${b.event.time}</td>
-                    <td>${b.event.location}</td>
-                    <td>${actionBtn}</td>
+                    <td data-label="Event Details"><div style="font-weight:600;">${b.event.title}</div></td>
+                    <td data-label="Scheduled Date">${b.event.date} at ${b.event.time}</td>
+                    <td data-label="Location">${b.event.location}</td>
+                    <td data-label="Action">${actionBtn}</td>
                 </tr>
                 `;
             }).join('');
@@ -338,13 +338,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             paymentHistoryTbody.innerHTML = paidBookings.map(b => {
                 return `
                 <tr>
-                    <td>
+                    <td data-label="Event">
                         <div style="font-weight:600;">${b.event.title}</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> ${b.event.location}</div>
                     </td>
-                    <td style="white-space: nowrap;">${b.event.date}</td>
-                    <td style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(b.event.price).toFixed(2)}</td>
-                    <td style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
+                    <td data-label="Transaction Date" style="white-space: nowrap;">${b.event.date}</td>
+                    <td data-label="Amount Paid" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(b.event.price).toFixed(2)}</td>
+                    <td data-label="Status" style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
                 </tr>
                 `;
             }).join('');
@@ -480,16 +480,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 item.activeAttendees.forEach(attendee => {
                     paymentRowsHtml += `
                     <tr>
-                        <td>
+                        <td data-label="Event">
                             <div style="font-weight:600;">${item.title}</div>
                         </td>
-                        <td>
+                        <td data-label="Attendee">
                             <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
                             <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
                         </td>
-                        <td style="white-space: nowrap;">${item.date}</td>
-                        <td style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(item.price).toFixed(2)}</td>
-                        <td style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
+                        <td data-label="Transaction Date" style="white-space: nowrap;">${item.date}</td>
+                        <td data-label="Revenue" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(item.price).toFixed(2)}</td>
+                        <td data-label="Status" style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
                     </tr>
                     `;
                 });
@@ -511,13 +511,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             tbody.innerHTML = attendees.map(a => `
                 <tr>
-                    <td><div style="font-weight:500;">${a.user.name}</div></td>
-                    <td>
+                    <td data-label="Attendee Name"><div style="font-weight:500;">${a.user.name}</div></td>
+                    <td data-label="Contact Info">
                         <div style="color:var(--text-main); font-size: 0.85rem;">${a.user.email}</div>
                         <div style="color:var(--text-muted); font-size: 0.8rem;">${a.user.phone || a.phone || 'N/A'}</div>
                     </td>
-                    <td style="font-size: 0.85rem; color:var(--text-muted);">${a.company || 'N/A'}</td>
-                    <td>
+                    <td data-label="Organization" style="font-size: 0.85rem; color:var(--text-muted);">${a.company || 'N/A'}</td>
+                    <td data-label="Status">
                         ${a.status === 'CANCELLED' 
                             ? `<span class="badge badge-danger" style="font-size: 0.7rem;">Cancelled</span>`
                             : `<span class="badge badge-success" style="font-size: 0.7rem;">Booked</span>`
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <tbody>
                                 ${users.map(u => `
                                     <tr>
-                                        <td>
+                                        <td data-label="Name / Email">
                                             <div style="display:flex; align-items:center; gap:0.8rem;">
                                                 <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--border); overflow: hidden; display:flex; justify-content:center; align-items:center;">
                                                     ${u.profileImage ? `<img src="${u.profileImage}" style="width:100%; height:100%; object-fit:cover;">` : `<i class="fas fa-user text-muted"></i>`}
@@ -685,9 +685,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><span class="badge ${u.role==='ADMIN'?'badge-danger':u.role==='ORGANIZER'?'badge-warning':'badge-primary'}">${u.role}</span></td>
-                                        <td style="white-space: nowrap;">
-                                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        <td data-label="Role"><span class="badge ${u.role==='ADMIN'?'badge-danger':u.role==='ORGANIZER'?'badge-warning':'badge-primary'}">${u.role}</span></td>
+                                        <td data-label="Action" style="white-space: nowrap;">
+                                            <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end;">
                                                 <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="openUserModal(${u.id})"><i class="fas fa-edit" style="margin-right: 0.4rem;"></i> Edit</button>
                                                 ${u.id !== session.id ? `<button class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteUser(${u.id})"><i class="fas fa-trash" style="margin-right: 0.4rem;"></i> Drop</button>` : `<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">You</span>`}
                                             </div>
@@ -729,16 +729,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                                     return `
                                     <tr>
-                                        <td>
+                                        <td data-label="Event Title">
                                             <div style="font-weight:500;">${e.title}</div>
                                             <div style="font-size:0.75rem; color:var(--text-muted);">${e.location}</div>
                                             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">${e.isFree ? 'Free' : '$' + parseFloat(e.price).toFixed(2)}</div>
                                             <div style="font-size:0.75rem; color:var(--secondary); margin-top:0.2rem;"><i class="fas fa-user-tie"></i> Host: ${e.organizer ? e.organizer.name : 'Administrator'}</div>
                                             <div style="font-size:0.75rem; margin-top:0.4rem;">${statusBtnHtml}</div>
                                         </td>
-                                        <td style="white-space: nowrap;">${e.date} at ${e.time}</td>
-                                        <td style="white-space: nowrap;">
-                                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        <td data-label="Date & Time" style="white-space: nowrap;">${e.date} at ${e.time}</td>
+                                        <td data-label="Action" style="white-space: nowrap;">
+                                            <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end;">
                                                 <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="viewAttendees(${e.id})"><i class="fas fa-users" style="margin-right: 0.4rem;"></i> Attendees</button>
                                                 <button class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteEvent(${e.id}, 'admin')"><i class="fas fa-trash" style="margin-right: 0.4rem;"></i> Drop</button>
                                             </div>
@@ -777,16 +777,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 activeAttendees.forEach(attendee => {
                     paymentRowsHtml += `
                     <tr>
-                        <td>
+                        <td data-label="Event">
                             <div style="font-weight:600;">${ev.title}</div>
                         </td>
-                        <td>
+                        <td data-label="Attendee">
                             <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
                             <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
                         </td>
-                        <td style="white-space: nowrap;">${ev.date}</td>
-                        <td style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(ev.price).toFixed(2)}</td>
-                        <td style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
+                        <td data-label="Transaction Date" style="white-space: nowrap;">${ev.date}</td>
+                        <td data-label="Amount Paid" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(ev.price).toFixed(2)}</td>
+                        <td data-label="Status" style="white-space: nowrap;"><span class="badge badge-success"><i class="fas fa-check-circle" style="margin-right:0.2rem;"></i> Success</span></td>
                     </tr>
                     `;
                 });

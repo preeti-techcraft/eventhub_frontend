@@ -838,4 +838,62 @@ tr:hover td {
     #about .glass-card {
         padding: 2.5rem 1.5rem;
     }
+
+    /* Responsive Tables */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        padding-left: 50%;
+        text-align: right !important;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    td:last-child {
+        border-bottom: 0;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* Override padding for cells with flex content */
+    td > div {
+        text-align: right;
+    }
+    
+    td .badge {
+        margin-left: auto;
+    }
 }
