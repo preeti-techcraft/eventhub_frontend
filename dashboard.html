@@ -483,18 +483,18 @@
             <span class="modal-close" id="gallery-close">&times;</span>
             <h3 class="mb-4" id="gallery-title">Event Gallery</h3>
 
-            <form id="gallery-form" style="display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center;">
+            <form id="gallery-form" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center;">
                 <input type="file" id="gallery-file" class="form-control" accept="image/*"
-                    style="flex: 1; padding: 0.5rem;">
-                <span class="text-muted" style="font-weight: 600; font-size: 0.8rem;">OR</span>
+                    style="flex: 1; min-width: 200px; padding: 0.5rem;">
+                <span class="text-muted" style="font-weight: 600; font-size: 0.8rem; width: 100%; text-align: center; margin: -0.5rem 0;">OR</span>
                 <input type="url" id="gallery-image-url" class="form-control"
-                    placeholder="Paste Image URL here (e.g. https://...)" style="flex: 1;">
-                <button type="submit" class="btn btn-primary" style="white-space: nowrap;"><i class="fas fa-upload"></i>
+                    placeholder="Paste Image URL here (e.g. https://...)" style="flex: 1; min-width: 200px;">
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap; flex: 1; min-width: 150px;"><i class="fas fa-upload"></i>
                     Upload</button>
             </form>
 
             <div id="gallery-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; flex: 1; overflow-y: auto; padding-right: 0.5rem;">
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.5rem; flex: 1; overflow-y: auto; padding-right: 0.5rem;">
                 <!-- Populated via JS -->
             </div>
         </div>
