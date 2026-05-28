@@ -746,10 +746,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         </td>
                                         <td data-label="Date & Time" style="white-space: nowrap;">${e.date} at ${e.time}</td>
                                         <td data-label="Action" style="white-space: nowrap;">
-                                            <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end;">
-                                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="viewAttendees(${e.id})"><i class="fas fa-users" style="margin-right: 0.4rem;"></i> Attendees</button>
-                                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="openGallery(${e.id})"><i class="fas fa-images" style="margin-right: 0.4rem;"></i> Gallery</button>
-                                                <button class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteEvent(${e.id}, 'admin')"><i class="fas fa-trash" style="margin-right: 0.4rem;"></i> Drop</button>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end;">
+                                                <div style="display: flex; gap: 0.5rem;">
+                                                    <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="viewAttendees(${e.id})"><i class="fas fa-users" style="margin-right: 0.4rem;"></i> Attendees</button>
+                                                    <button class="btn btn-danger" style="padding: 0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteEvent(${e.id}, 'admin')"><i class="fas fa-trash" style="margin-right: 0.4rem;"></i> Drop</button>
+                                                </div>
+                                                <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size:0.8rem; width: 100%; justify-content: center;" onclick="openGallery(${e.id})"><i class="fas fa-images" style="margin-right: 0.4rem;"></i> Gallery</button>
                                             </div>
                                         </td>
                                     </tr>
