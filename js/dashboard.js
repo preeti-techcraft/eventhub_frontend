@@ -339,8 +339,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return `
                 <tr>
                     <td data-label="Event">
-                        <div style="font-weight:600;">${b.event.title}</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> ${b.event.location}</div>
+                        <div>
+                            <div style="font-weight:600;">${b.event.title}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> ${b.event.location}</div>
+                        </div>
                     </td>
                     <td data-label="Transaction Date" style="white-space: nowrap;">${b.event.date}</td>
                     <td data-label="Amount Paid" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(b.event.price).toFixed(2)}</td>
@@ -408,12 +410,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         }));
 
         let html = `
-            <div style="display:flex; gap: 2rem; margin-bottom: 2rem;">
-                <div class="glass-card" style="flex:1; padding: 1.5rem; text-align: center; border-bottom: 3px solid var(--success);">
+            <div style="display:flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <div class="glass-card" style="flex:1; min-width:200px; padding: 1.5rem; text-align: center; border-bottom: 3px solid var(--success);">
                     <h3 style="color:var(--text-muted); font-size:1rem; margin-bottom:0.5rem;">Total Revenue Generated</h3>
                     <div style="font-size:2rem; font-weight:700; color:var(--success);">$${totalRevenue.toFixed(2)}</div>
                 </div>
-                <div class="glass-card" style="flex:1; padding: 1.5rem; text-align: center; border-bottom: 3px solid var(--primary);">
+                <div class="glass-card" style="flex:1; min-width:200px; padding: 1.5rem; text-align: center; border-bottom: 3px solid var(--primary);">
                     <h3 style="color:var(--text-muted); font-size:1rem; margin-bottom:0.5rem;">Events Organized</h3>
                     <div style="font-size:2rem; font-weight:700; color:var(--primary);">${myEvents.length}</div>
                 </div>
@@ -484,8 +486,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div style="font-weight:600;">${item.title}</div>
                         </td>
                         <td data-label="Attendee">
-                            <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
+                            <div>
+                                <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
+                            </div>
                         </td>
                         <td data-label="Transaction Date" style="white-space: nowrap;">${item.date}</td>
                         <td data-label="Revenue" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(item.price).toFixed(2)}</td>
@@ -513,8 +517,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <tr>
                     <td data-label="Attendee Name"><div style="font-weight:500;">${a.user.name}</div></td>
                     <td data-label="Contact Info">
-                        <div style="color:var(--text-main); font-size: 0.85rem;">${a.user.email}</div>
-                        <div style="color:var(--text-muted); font-size: 0.8rem;">${a.user.phone || a.phone || 'N/A'}</div>
+                        <div>
+                            <div style="color:var(--text-main); font-size: 0.85rem;">${a.user.email}</div>
+                            <div style="color:var(--text-muted); font-size: 0.8rem;">${a.user.phone || a.phone || 'N/A'}</div>
+                        </div>
                     </td>
                     <td data-label="Organization" style="font-size: 0.85rem; color:var(--text-muted);">${a.company || 'N/A'}</td>
                     <td data-label="Status">
@@ -663,8 +669,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div style="display:flex; flex-direction: column; gap: 2rem;">
                 
                 <!-- Users Table -->
-                <div class="glass-card" style="flex: 1; min-width: 400px; padding: 1.5rem;">
-                    <div style="display:flex; justify-content: space-between; align-items:center;" class="mb-4">
+                <div class="glass-card" style="flex: 1; min-width: 280px; padding: 1.5rem;">
+                    <div style="display:flex; justify-content: space-between; align-items:center; flex-wrap:wrap; gap:1rem;" class="mb-4">
                         <h3 style="margin: 0; font-size: 1.2rem;"><i class="fas fa-users-cog" style="color:var(--primary); margin-right:0.5rem;"></i> System Users</h3>
                         <button class="btn btn-primary" onclick="openUserModal()" style="padding: 0.4rem 1rem; font-size: 0.85rem;"><i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i> Add User</button>
                     </div>
@@ -700,7 +706,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
 
                 <!-- Events Table -->
-                <div class="glass-card" style="flex: 1; min-width: 400px; padding: 1.5rem;">
+                <div class="glass-card" style="flex: 1; min-width: 280px; padding: 1.5rem;">
                     <h3 class="mb-4" style="font-size: 1.2rem;"><i class="fas fa-calendar-week" style="color:var(--secondary); margin-right:0.5rem;"></i> Global Events</h3>
                     <div class="table-container">
                         <table>
@@ -730,11 +736,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     return `
                                     <tr>
                                         <td data-label="Event Title">
-                                            <div style="font-weight:500;">${e.title}</div>
-                                            <div style="font-size:0.75rem; color:var(--text-muted);">${e.location}</div>
-                                            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">${e.isFree ? 'Free' : '$' + parseFloat(e.price).toFixed(2)}</div>
-                                            <div style="font-size:0.75rem; color:var(--secondary); margin-top:0.2rem;"><i class="fas fa-user-tie"></i> Host: ${e.organizer ? e.organizer.name : 'Administrator'}</div>
-                                            <div style="font-size:0.75rem; margin-top:0.4rem;">${statusBtnHtml}</div>
+                                            <div>
+                                                <div style="font-weight:500;">${e.title}</div>
+                                                <div style="font-size:0.75rem; color:var(--text-muted);">${e.location}</div>
+                                                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">${e.isFree ? 'Free' : '$' + parseFloat(e.price).toFixed(2)}</div>
+                                                <div style="font-size:0.75rem; color:var(--secondary); margin-top:0.2rem;"><i class="fas fa-user-tie"></i> Host: ${e.organizer ? e.organizer.name : 'Administrator'}</div>
+                                                <div style="font-size:0.75rem; margin-top:0.4rem;">${statusBtnHtml}</div>
+                                            </div>
                                         </td>
                                         <td data-label="Date & Time" style="white-space: nowrap;">${e.date} at ${e.time}</td>
                                         <td data-label="Action" style="white-space: nowrap;">
@@ -781,8 +789,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div style="font-weight:600;">${ev.title}</div>
                         </td>
                         <td data-label="Attendee">
-                            <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
+                            <div>
+                                <div style="font-weight:500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${attendee.user ? attendee.user.name : 'Unknown User'}</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">${attendee.user ? attendee.user.email : ''}</div>
+                            </div>
                         </td>
                         <td data-label="Transaction Date" style="white-space: nowrap;">${ev.date}</td>
                         <td data-label="Amount Paid" style="font-weight:bold; color:var(--success); white-space: nowrap;">$${parseFloat(ev.price).toFixed(2)}</td>
