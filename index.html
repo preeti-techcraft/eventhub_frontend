@@ -41,7 +41,7 @@
                 </h1>
                 <p
                     style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                    Seamlessly discover upcoming events, book your spot, or host your own professional gatherings all in
+                    Seamlessly discover upcoming events, book your spot or host your own professional gatherings all in
                     one
                     place.
                 </p>
@@ -141,7 +141,7 @@
 
             <p
                 style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                My technical background spans modern front-end design using Vanilla Javascript, CSS Glassmorphism, and
+                My technical background spans modern front-end design using Vanilla Javascript, CSS Glassmorphism and
                 responsive architectures, powered by robust Java Spring Boot and MySQL backends. I thrive on solving
                 complex logic problems and delivering a "WOW" experience to end users.
             </p>
@@ -168,11 +168,11 @@
                 <div id="register-fields" style="display: none;">
                     <div class="form-group">
                         <label class="form-label">Full Name</label>
-                        <input type="text" id="auth-name" class="form-control" placeholder="John Doe">
+                        <input type="text" id="auth-name" class="form-control" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Phone Number <span style="color:var(--danger)">*</span></label>
-                        <input type="tel" id="auth-phone" class="form-control" placeholder="+1 234 567 8900" required>
+                        <input type="tel" id="auth-phone" class="form-control" placeholder="+91" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Role</label>
@@ -187,12 +187,12 @@
                 <!-- Common Fields -->
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input type="email" id="auth-email" class="form-control" placeholder="you@example.com" required>
+                    <input type="email" id="auth-email" class="form-control" placeholder="enter your email" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <div style="position: relative;">
-                        <input type="password" id="auth-password" class="form-control" placeholder="••••••••" required
+                        <input type="password" id="auth-password" class="form-control" placeholder="enter your password" required
                             style="padding-right: 40px;">
                         <i class="fas fa-eye" id="toggle-password"
                             style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-muted); transition: color 0.3s ease;"></i>
@@ -222,11 +222,11 @@
             <form id="forgot-password-form">
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input type="email" id="fp-email" class="form-control" placeholder="you@example.com" required>
+                    <input type="email" id="fp-email" class="form-control" placeholder="enter your email" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">New Password</label>
-                    <input type="password" id="fp-new-password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="fp-new-password" class="form-control" placeholder="enter your new password" required>
                 </div>
                 <button type="submit" class="btn btn-primary"
                     style="width: 100%; margin-top: 1rem; padding: 1rem;">Reset Password</button>
