@@ -1,6 +1,5 @@
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:8080/api'
-    : 'https://eventhubbackend-production.up.railway.app/api';
+// const API_BASE = 'https://eventhubbackend-production.up.railway.app/api'; // Production URL
+const API_BASE = 'http://localhost:8080/api'; // Local URL
 
 // Helper function to include JWT token in all secure requests
 const getAuthHeaders = () => {
